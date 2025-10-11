@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Line chart - Active Drivers
+  
   const ctxLine = document.getElementById("lineDrivers");
   new Chart(ctxLine, {
     type: "line",
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     options: {responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}}}
   });
 
-  // Donut chart - Visits
+  
   new Chart(document.getElementById("donutVisits"), {
     type: "doughnut",
     data: {
@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     options: {cutout: "70%", plugins:{legend:{display:false}}}
   });
 
-  // Donut chart - Active Users
   new Chart(document.getElementById("donutUsers"), {
     type: "doughnut",
     data: {
