@@ -1,0 +1,27 @@
+@media (max-width: 1024px) {
+  .row.two-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+  .sidebar .brand-name,
+  .sidebar .nav-item span:not(.icon) {
+    display: none;
+  }
+  .content {
+    margin-left: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .time-tabs {
+    flex-wrap: wrap;
+  }
+}

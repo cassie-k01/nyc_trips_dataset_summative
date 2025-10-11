@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trips | NYC Taxi Dashboard</title>
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      background-color: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: var(--yellow);
+      color: var(--black);
+    }
+
+    tr:hover {
+      background-color: #fff8d6;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/img/taxi-icon.png" alt="Taxi Logo" />
+      <h1>NYC Taxi Trips</h1>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="drivers.html">Drivers</a></li>
+        <li><a href="trips.html" class="active">Trips</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <input type="text" placeholder="Search..." class="search-bar" />
+      <img src="assets/img/user-icon.png" class="user-icon" alt="User" />
+    </div>
+  </header>
+
+  <main>
+    <h2>Trip Data Explorer</h2>
+    <p>Filter and analyze trip data including fares, distances, and pickup/dropoff points.</p>
+
+    <section>
+      <table>
+        <thead>
+          <tr>
+            <th>Trip ID</th>
+            <th>Pickup</th>
+            <th>Dropoff</th>
+            <th>Distance (km)</th>
+            <th>Fare ($)</th>
+          </tr>
+        </thead>
+        <tbody id="tripTableBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 NYC Taxi Analytics | Designed by Nformi Girbong</p>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script>
+    // Populate trip table dynamically
+    document.addEventListener("DOMContentLoaded", () => {
+      const tbody = document.getElementById("tripTableBody");
+      tripData.forEach(trip => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${trip.id}</td>
+          <td>${trip.pickup}</td>
+          <td>${trip.dropoff}</td>
+          <td>${trip.distance.toFixed(1)}</td>
+          <td>$${trip.fare.toFixed(2)}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NYC Taxi Dashboard — v2</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/base.css"/>
+  <link rel="stylesheet" href="assets/css/sidebar.css"/>
+  <link rel="stylesheet" href="assets/css/dashboard.css"/>
+  <link rel="stylesheet" href="assets/css/charts.css"/>
+  <link rel="stylesheet" href="assets/css/responsive.css"/>
+
+  <!-- Charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="assets/img/taxi-logo.svg" alt="Logo" class="brand-logo"/>
+        <span class="brand-name">TAXI</span>
+      </div>
+
+      <nav class="side-nav">
+        <a class="nav-item active" href="index.html">
+          <span class="icon">🏠</span><span>Dashboard</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span class="icon">🧑‍✈️</span><span>Drivers</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span class="icon">🧑‍🦼</span><span>Riders</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span class="icon">🚕</span><span>Rides</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span class="icon">💳</span><span>Payment</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span class="icon">🎁</span><span>Promo Code</span>
+        </a>
+        <a class="nav-item" href="#">
+          <span class="icon">📊</span><span>Reports</span>
+        </a>
+
+        <div class="side-sep"></div>
+
+        <a class="nav-item" href="#"><span class="icon">⚙️</span><span>Settings</span></a>
+        <a class="nav-item" href="#"><span class="icon">🚪</span><span>Logout</span></a>
+      </nav>
+
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">☰</button>
+    </aside>
+
+    <!-- Main content -->
+    <main class="content">
+
+      <!-- Top bar -->
+      <header class="topbar">
+        <div class="search-wrap">
+          <span class="search-icon">🔎</span>
+          <input type="text" class="search-input" placeholder="Type to search"/>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="topbar-btn" title="Notifications">🔔</button>
+          <img src="assets/img/user-avatar.jpg" alt="User" class="avatar"/>
+        </div>
+      </header>
+
+      <!-- KPI cards -->
+      <section class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-header">Booked Trips</div>
+          <div class="kpi-value" id="kpiBooked">1,486</div>
+          <div class="kpi-delta up">+36.59%</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-header">Cancelled Trips</div>
+          <div class="kpi-value" id="kpiCancelled">247</div>
+          <div class="kpi-delta down">-14.74%</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-header">Available Cars</div>
+          <div class="kpi-value" id="kpiCars">30</div>
+          <div class="kpi-delta up">+13.08%</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-header">Total Earnings</div>
+          <div class="kpi-value" id="kpiEarnings">$33,493</div>
+          <div class="kpi-delta up">+47.82%</div>
+        </div>
+      </section>
+
+      <!-- Charts + side widgets -->
+      <section class="row two-cols">
+        <div class="card">
+          <div class="card-title">
+            <h3>Active Drivers by Time</h3>
+            <div class="time-tabs">
+              <button class="tab-btn" data-range="today">Today</button>
+              <button class="tab-btn active" data-range="yesterday">Yesterday</button>
+              <button class="tab-btn" data-range="7d">7 Days</button>
+              <button class="tab-btn" data-range="30d">30 Days</button>
+            </div>
+          </div>
+          <canvas id="lineDrivers"></canvas>
+        </div>
+
+        <div class="card side-widgets">
+          <div class="mini-chart">
+            <h4>Visits</h4>
+            <div class="mini-donuts">
+              <div class="donut-box">
+                <canvas id="donutVisits"></canvas>
+                <div class="donut-label">
+                  <div class="donut-title">App Visits</div>
+                  <div class="donut-value" id="visitsVal">57,489</div>
+                </div>
+              </div>
+              <div class="donut-box">
+                <canvas id="donutUsers"></canvas>
+                <div class="donut-label">
+                  <div class="donut-title">Active Users</div>
+                  <div class="donut-value" id="usersVal">3,748</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Map + Top drivers -->
+      <section class="row two-cols">
+        <div class="card">
+          <h3>City Map (Preview)</h3>
+          <div id="mapPreview" class="map-preview">
+            <!-- Replace this placeholder with Leaflet/Mapbox later -->
+            <div class="map-placeholder">🗺️ NYC Map with taxi markers</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <h3>Top Drivers</h3>
+            <a class="link-sm" href="#">See all drivers →</a>
+          </div>
+
+          <ul class="driver-list">
+            <li class="driver-item">
+              <img src="assets/img/driver1.jpg" class="driver-avatar" alt="Moises"/>
+              <div class="driver-meta">
+                <div class="driver-name">Moises R. Williams</div>
+                <div class="driver-email">moises.williams@email.com</div>
+              </div>
+              <a class="view-link" href="#">View Details</a>
+            </li>
+
+            <li class="driver-item">
+              <img src="assets/img/driver2.jpg" class="driver-avatar" alt="Melissa"/>
+              <div class="driver-meta">
+                <div class="driver-name">Melissa W. Vaughn</div>
+                <div class="driver-email">melissa.vaughn@email.com</div>
+              </div>
+              <a class="view-link" href="#">View Details</a>
+            </li>
+
+            <li class="driver-item">
+              <img src="assets/img/driver3.jpg" class="driver-avatar" alt="Stephen"/>
+              <div class="driver-meta">
+                <div class="driver-name">Stephen P. Bunnell</div>
+                <div class="driver-email">stephen.bunnell@email.com</div>
+              </div>
+              <a class="view-link" href="#">View Details</a>
+            </li>
+
+            <li class="driver-item">
+              <img src="assets/img/driver4.jpg" class="driver-avatar" alt="Kenneth"/>
+              <div class="driver-meta">
+                <div class="driver-name">Kenneth B. Jones</div>
+                <div class="driver-email">kenneth.jones@email.com</div>
+              </div>
+              <a class="view-link" href="#">View Details</a>
+            </li>
+
+            <li class="driver-item">
+              <img src="assets/img/driver5.jpg" class="driver-avatar" alt="Leslie"/>
+              <div class="driver-meta">
+                <div class="driver-name">Leslie C. Pruitt</div>
+                <div class="driver-email">leslie.pruitt@email.com</div>
+              </div>
+              <a class="view-link" href="#">View Details</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="footer">
+        © 2025 NYC Taxi Analytics — UI v2
+      </footer>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/sidebar.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

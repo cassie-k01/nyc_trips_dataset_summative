@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | NYC Taxi Dashboard</title>
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/img/taxi-icon.png" alt="Taxi Logo" />
+      <h1>NYC Taxi Trips</h1>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="drivers.html">Drivers</a></li>
+        <li><a href="trips.html">Trips</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <input type="text" placeholder="Search..." class="search-bar" />
+      <img src="assets/img/user-icon.png" class="user-icon" alt="User" />
+    </div>
+  </header>
+
+  <main>
+    <section style="background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <h2>About the Project</h2>
+      <p>
+        The <strong>NYC Taxi Trip Dashboard</strong> is an enterprise-level fullstack application that visualizes patterns in New York City taxi trip data.
+        It enables users to analyze pickup/dropoff trends, fare distributions, and driver performance through an interactive web interface.
+      </p>
+
+      <h3 style="margin-top: 1.5rem;">Dataset Information</h3>
+      <p>
+        Data Source: <a href="https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page" target="_blank">NYC Taxi and Limousine Commission (TLC) Dataset</a>.
+        This dataset contains trip-level records including timestamps, distances, fares, tips, and geolocations.
+      </p>
+
+      <h3 style="margin-top: 1.5rem;">Team Roles</h3>
+      <ul style="margin-left: 1.5rem; line-height: 1.7;">
+        <li><strong>Person 1:</strong> Data Engineer (Data Cleaning & Feature Engineering)</li>
+        <li><strong>Person 2:</strong> Backend Developer (Database & API)</li>
+        <li><strong>Person 3:</strong> Frontend Developer & Visualization Lead — <em>Nformi Girbong</em></li>
+        <li><strong>Person 4:</strong> Algorithm & Integration Engineer</li>
+      </ul>
+
+      <h3 style="margin-top: 1.5rem;">Acknowledgement</h3>
+      <p>
+        This project is part of the ALU Software Engineering coursework and demonstrates data-driven urban mobility insights through technology.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 NYC Taxi Analytics | Designed by Nformi Girbong</p>
+  </footer>
+
+  <script src="assets/js/navbar.js"></script>
+</body>
+</html>

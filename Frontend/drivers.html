@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Drivers | NYC Taxi Dashboard</title>
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/drivers.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/img/taxi-icon.png" alt="Taxi Logo" />
+      <h1>NYC Taxi Trips</h1>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="drivers.html" class="active">Drivers</a></li>
+        <li><a href="trips.html">Trips</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <input type="text" placeholder="Search..." class="search-bar" />
+      <img src="assets/img/user-icon.png" class="user-icon" alt="User" />
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <h2>Top Drivers Analytics</h2>
+    <p>Explore performance metrics and ratings of NYC’s leading drivers.</p>
+
+    <section class="top-drivers" style="margin-top: 2rem;">
+      <h3>Driver Performance Overview</h3>
+      <ul class="driver-list">
+        <li>
+          <div class="driver-rank">1</div>
+          <img src="assets/img/driver1.jpg" alt="Driver 1" />
+          <div class="driver-info">
+            <h4>Jody Borgman</h4>
+            <p>Trips: 240 | Rating: 4.9⭐ | Earnings: $5,200</p>
+          </div>
+        </li>
+        <li>
+          <div class="driver-rank">2</div>
+          <img src="assets/img/driver2.jpg" alt="Driver 2" />
+          <div class="driver-info">
+            <h4>Alan Friedman</h4>
+            <p>Trips: 210 | Rating: 4.8⭐ | Earnings: $4,780</p>
+          </div>
+        </li>
+        <li>
+          <div class="driver-rank">3</div>
+          <img src="assets/img/driver3.jpg" alt="Driver 3" />
+          <div class="driver-info">
+            <h4>Chris Jack</h4>
+            <p>Trips: 198 | Rating: 4.7⭐ | Earnings: $4,500</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 NYC Taxi Analytics | Designed by Nformi Girbong</p>
+  </footer>
+
+  <script src="assets/js/navbar.js"></script>
+</body>
+</html>
