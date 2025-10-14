@@ -4,7 +4,7 @@ import logging
 import os
 
 # Ensure the logs directory exists
-logs_dir = 'C:\\Users\\hp\\Downloads\\nyc_trips_dataset_summative\\logs'
+logs_dir = 'C:\\Users\\hp\\Downloads\\nyc-taxi-data-processing\\logs'
 os.makedirs(logs_dir, exist_ok=True)
 
 # Configure logging
@@ -61,9 +61,27 @@ excluded_records = df[
     (df['pickup_latitude'] == 0) | (df['pickup_longitude'] == 0)
 ]
 
-# Log excluded records
+# Log excluded records with reasons
 for _, record in excluded_records.iterrows():
-    logging.info(f'Excluded record: {record.to_dict()}')
+    reasons = []
+    if record['trip_distance'] < 0.1:
+        reasons.append('trip_distance < 0.1')
+    if record['trip_distance'] > 100:
+        reasons.append('trip_distance > 100')
+    if record['trip_speed'] < 0.5:
+        reasons.append('trip_speed < 0.5')
+    if record['trip_speed'] > 100:
+        reasons.append('trip_speed > 100')
+    if record['trip_duration'] < 60:
+        reasons.append('trip_duration < 60')
+    if record['trip_duration'] > 10800:
+        reasons.append('trip_duration > 10800')
+    if record['pickup_latitude'] == 0:
+        reasons.append('pickup_latitude == 0')
+    if record['pickup_longitude'] == 0:
+        reasons.append('pickup_longitude == 0')
+
+    logging.info(f'Excluded record: {record.to_dict()} due to reasons: {", ".join(reasons)}')
 
 # Keep only clean records
 clean = df[
@@ -74,7 +92,7 @@ clean = df[
 ]
 
 # Ensure the processed directory exists
-processed_dir = 'C:\\Users\\hp\\Downloads\\nyc_trips_dataset_summative\\processed'
+processed_dir = 'C:\\Users\\hp\\Downloads\\nyc-taxi-data-processing\\processed'
 os.makedirs(processed_dir, exist_ok=True)
 
 # Save cleaned data
