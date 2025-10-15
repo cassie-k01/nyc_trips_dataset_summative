@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-  
+function initCharts(driverActivity = []) {
+
   const ctxLine = document.getElementById("lineDrivers");
   new Chart(ctxLine, {
     type: "line",
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       labels: ["8 AM","9 AM","10 AM","11 AM","12 PM","1 PM","2 PM","3 PM","4 PM","5 PM","6 PM"],
       datasets: [{
         label: "Active Drivers",
-        data: driverActivity,
+        data: driverActivity.length ? driverActivity : [50, 70, 87, 120, 90, 60, 40],
         borderColor: "#5c3dff",
         backgroundColor: "rgba(92,61,255,0.2)",
         fill: true,
@@ -43,4 +43,4 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     options: {cutout: "70%", plugins:{legend:{display:false}}}
   });
-});
+}
