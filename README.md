@@ -1,34 +1,121 @@
-README - NYC Trips Dataset Summative
+# NYC Trips Dataset Summative
 
 This repository contains scripts and data for analyzing NYC taxi trip records.
 
-IMPORTANT: This project uses Git Large File Storage (Git LFS) to manage large files like processed/cleaned_data.csv. To access the full dataset, follow the instructions below.
+---
 
-Setup Instructions:
+## ⚙ SETUP INSTRUCTIONS
 
-1. Install Git LFS (one-time setup)
-   - Download and install Git LFS from https://git-lfs.com/
-   - After installation, run:
-     git lfs install
+### 1. Install Git LFS (one-time setup)
 
-2. Clone the repository
-   git clone https://github.com/cassie-k01/nyc_trips_dataset_summative.git
-   cd nyc_trips_dataset_summative
+Download and install Git LFS from [https://git-lfs.com/](https://git-lfs.com/)
+After installation, run:
 
-3. Pull the large files tracked by Git LFS
-   git lfs pull
 
-This will download the full cleaned_data.csv file in its original state.
+git lfs install
 
-Viewing the CSV:
 
-You can open the file using any spreadsheet tool (Excel, LibreOffice) or load it in Python:
+### 2. Clone the repository
 
-   import pandas as pd
-   df = pd.read_csv('processed/cleaned_data.csv')
-   print(df.head())
 
-Make sure you have enough disk space, as the file is over 200MB.
+git clone https://github.com/cassie-k01/nyc_trips_dataset_summative.git
+cd nyc_trips_dataset_summative
 
-If you encounter issues with missing files or pointer text, double-check that Git LFS is installed and that you ran `git lfs pull`.
 
+### 3. Pull the large files tracked by Git LFS
+
+
+git lfs pull
+
+
+This will download the full processed/cleaned_data.csv file in its original state.
+
+---
+
+##  DATA CLEANING
+
+The cleaned dataset is located at:
+
+
+processed/cleaned_data.csv
+
+
+You can open it using Excel, LibreOffice, or Python:
+
+python
+import pandas as pd
+df = pd.read_csv('processed/cleaned_data.csv')
+print(df.head())
+
+
+---
+
+##  DATABASE
+
+The SQLite database stores all cleaned trip data for backend queries.
+
+*Database file path:*
+
+
+backend/database/nyc_trips.db
+
+
+Make sure this file exists before starting the backend server.
+
+---
+
+## 🖥 BACKEND SETUP
+
+1. Navigate to the backend folder:
+
+
+cd backend
+
+
+2. Install dependencies:
+
+
+npm install
+
+
+3. Start the backend server:
+
+
+node server.js
+
+
+If successful, you should see:
+
+
+Server running on http://localhost:5000
+
+
+---
+
+### Backend Endpoints
+
+* *GET /trips* → Returns all trips.
+* *GET /trips/:id* → Returns a single trip by ID.
+* *GET /trips/stats* → Returns statistics (total trips, cancelled trips, average distance, total fare).
+* *GET /trips/hour/:hour* → Returns trips aggregated by hour of the day.
+
+---
+
+## 🧩 ALGORITHM SCRIPT
+
+A custom bubble sort algorithm ranks trips by *duration per kilometer*.
+
+*How to run:*
+
+1. Ensure processed/cleaned_data.csv exists.
+2. Run:
+
+
+python scripts/manual_sort.py
+
+
+It will display the top 10 slowest trips based on duration per km.
+
+---
+GIT HUB LINK: https://github.com/cassie-k01/nyc_trips_dataset_summative.git
+Video link : https://youtu.be/fhrJy5thwgk
