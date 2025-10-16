@@ -26,16 +26,20 @@ const db = new sqlite3.Database(dbPath, (err) => {
 
 // 1 Get all trips (with optional limit)
 app.get("/trips", (req, res) => {
-  const sql = "SELECT * FROM trips LIMIT 10";
-  db.all(sql, [], (err, rows) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = 50;
+  const offset = (page - 1) * limit;
+
+  const sql = "SELECT * FROM trips LIMIT ? OFFSET ?";
+  db.all(sql, [limit, offset], (err, rows) => {
     if (err) {
-      console.error("Database error:", err.message);
-      res.status(500).json({ error: "Failed to fetch trips" });
+      res.status(500).json({ error: "Database error" });
     } else {
       res.json(rows);
     }
   });
 });
+
 
 // 2 Get trip statistics (e.g., average speed & distance)
 app.get("/trips/stats", (req, res) => {
