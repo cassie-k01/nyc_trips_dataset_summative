@@ -100,7 +100,21 @@ Server running on http://localhost:5000
 * *GET /trips/hour/:hour* → Returns trips aggregated by hour of the day.
 
 ---
+### 💻 FRONTEND SETUP
 
+1. Navigate to the frontend folder:
+
+cd frontend
+
+
+2. Open the index.html file.
+
+3. Click “Go Live” using the Live Server extension.
+
+4. Your frontend should automatically open in your browser at:
+
+http://127.0.0.1:5500/
+---
 ## 🧩 ALGORITHM SCRIPT
 
 A custom bubble sort algorithm ranks trips by *duration per kilometer*.
