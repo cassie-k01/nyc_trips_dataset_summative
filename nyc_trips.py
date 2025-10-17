@@ -1,10 +1,8 @@
 import sqlite3
 import pandas as pd
 
-# Path to your CSV in the "processed" folder
 csv_file = "processed/cleaned_data.csv"
 
-# Path where you want your SQLite database in the "database" folder
 db_path = "database/nyc_trips.db"
 
 # Load the CSV
@@ -23,3 +21,4 @@ rows = pd.read_sql_query("SELECT COUNT(*) AS total_records FROM trips;", conn)
 print(rows)
 
 conn.close()
+
