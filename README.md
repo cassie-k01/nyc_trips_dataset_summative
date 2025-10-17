@@ -132,4 +132,4 @@ It will display the top 10 slowest trips based on duration per km.
 
 ---
 GIT HUB LINK: https://github.com/cassie-k01/nyc_trips_dataset_summative.git
-Video link : https://youtu.be/fhrJy5thwgk
+Video link : https://youtu.be/c_MTCzoXFuE
