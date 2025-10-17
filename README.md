@@ -62,6 +62,8 @@ backend/database/nyc_trips.db
 
 Make sure this file exists before starting the backend server.
 
+Add extension SQLite Viewer
+
 ---
 
 ## 🖥 BACKEND SETUP
