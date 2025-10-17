@@ -1,13 +1,12 @@
-const kpiData = {
-  booked: 1486,
-  cancelled: 247,
-  cars: 30,
-  earnings: 33493
+// data.js
+const mockStats = {
+  total_trips: 1486,
+  cancelled_trips: 247,
+  avg_distance: 12.4,
+  total_fare: 33493,
 };
 
-const donutData = {
-  visits: 57489,
-  users: 3748
-};
-
-const driverActivity = [50, 70, 87, 120, 90, 60, 40];
+const mockTrips = [
+  { id: 1, distance: 3.4, fare: 8.5 },
+  { id: 2, distance: 2.8, fare: 6.2 },
+];

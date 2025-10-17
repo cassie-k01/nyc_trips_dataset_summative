@@ -1,56 +1,98 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ------------------------------
+   BASE STYLES
+   ------------------------------ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 :root {
-  --primary: #5c3dff;
-  --accent: #ffd60a;
-  --bg: #f5f6fb;
-  --white: #ffffff;
+  --yellow: #ffd60a;
   --black: #1c1c1c;
-  --gray: #888;
-  --success: #00b894;
-  --danger: #e17055;
+  --gray: #f4f4f4;
+  --white: #ffffff;
+  --teal: #2ec4b6;
+  --purple: #7b2cbf;
+  --orange: #ff8c00;
+  --pink: #ff5c8d;
 }
 
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  background: var(--bg);
+  background-color: var(--gray);
   color: var(--black);
-  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.app-shell {
-  display: flex;
-  min-height: 100vh;
+main {
+  flex: 1;
+  padding: 1.5rem 3rem;
 }
 
 h1, h2, h3, h4 {
+  font-weight: 700;
+  color: var(--black);
+}
+
+p {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+footer {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.8rem;
+  margin-top: 2rem;
+}
+
+/* Utility classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.btn {
+  background-color: var(--yellow);
+  color: var(--black);
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
   font-weight: 600;
 }
 
-.card {
-  background: var(--white);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+.btn:hover {
+  background-color: #ffce00;
 }
 
-.row.two-cols {
+
+.charts-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
 }
 
-.footer {
-  text-align: center;
-  color: var(--gray);
-  font-size: 0.8rem;
-  padding: 1rem 0;
-  margin-top: 2rem;
+.chart-container {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+
+canvas {
+  width: 100% !important;
+  height: auto !important;
 }

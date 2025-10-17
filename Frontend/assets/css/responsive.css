@@ -1,27 +1,61 @@
+/* ------------------------------
+   RESPONSIVE DESIGN
+   ------------------------------ */
+
 @media (max-width: 1024px) {
-  .row.two-cols {
+  .map-drivers-section {
     grid-template-columns: 1fr;
+  }
+
+  .map-container, .top-drivers {
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
-  .sidebar {
-    width: 70px;
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  .sidebar .brand-name,
-  .sidebar .nav-item span:not(.icon) {
-    display: none;
+
+  .nav-links {
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
-  .content {
-    margin-left: 70px;
+
+  .search-bar {
+    width: 120px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #map {
+    height: 300px;
+  }
+
+  footer {
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 480px) {
-  .kpi-grid {
-    grid-template-columns: 1fr 1fr;
+  main {
+    padding: 1rem;
   }
-  .time-tabs {
-    flex-wrap: wrap;
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-right {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .navbar .logo h1 {
+    font-size: 1rem;
   }
 }

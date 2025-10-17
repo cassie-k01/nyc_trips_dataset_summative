@@ -2,28 +2,42 @@ document.addEventListener("DOMContentLoaded", async () => {
   console.log("🚕 Connecting to Backend...");
 
   try {
-    // to mainly fetch trips
+    // === Fetch overall trip stats ===
     const statsRes = await fetch("http://localhost:5000/trips/stats");
     const stats = await statsRes.json();
+    console.log("📊 Stats fetched from backend:", stats);
 
-    // this will Update KPI Cards
-    document.getElementById("kpiBooked").textContent = stats.total_trips?.toLocaleString() || "N/A";
-    document.getElementById("kpiCancelled").textContent = stats.cancelled_trips?.toLocaleString() || "N/A";
-    document.getElementById("kpiCars").textContent = stats.avg_distance?.toFixed(2) || "N/A";
-    document.getElementById("kpiEarnings").textContent = `$${(stats.total_fare || 0).toLocaleString()}`;
-//fetches the ongoing hourly activity data mostly for my charts
+    if (stats) {
+      // Update KPI cards with live data
+      document.getElementById("kpiBooked").textContent =
+        stats.total_trips?.toLocaleString() || "N/A";
+      document.getElementById("kpiCancelled").textContent =
+        stats.avg_duration?.toFixed(1) + " mins" || "N/A";
+      document.getElementById("kpiCars").textContent =
+        stats.avg_distance?.toFixed(2) + " km" || "N/A";
+      document.getElementById("kpiEarnings").textContent = `$${(
+        stats.total_fare || 0
+      ).toLocaleString()}`;
+    }
+
+    // === Fetch hourly trip data (for charts) ===
     const hourRes = await fetch("http://localhost:5000/trips/hour/12");
     const hourData = await hourRes.json();
-    driverActivity = hourData.map(trip => trip.trip_count || 0);
+    const driverActivity = Array.isArray(hourData)
+      ? hourData.map((h) => h.trip_count)
+      : [];
 
-    // this will fetch  for just the top trips
+    console.log("🕓 Hourly Data:", driverActivity);
+
+    // === Fetch sample trips (for debugging / later visualization) ===
     const tripsRes = await fetch("http://localhost:5000/trips");
     const trips = await tripsRes.json();
-    console.log("Sample Trips:", trips.slice(0, 5));
+    console.log("✅ Sample Trips:", trips.slice(0, 5));
 
-    // after the data is fetched, this will load charts dynamically
-    if (typeof initCharts === "function") initCharts(driverActivity);
-
+    // === Initialize charts if available ===
+    if (typeof initCharts === "function") {
+      initCharts(driverActivity);
+    }
   } catch (err) {
     console.error("❌ Failed to fetch from backend:", err);
     alert("Could not connect to backend. Make sure Node server is running!");

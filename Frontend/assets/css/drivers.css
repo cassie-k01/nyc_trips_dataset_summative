@@ -1,0 +1,72 @@
+/* ------------------------------
+   TOP DRIVERS SECTION
+   ------------------------------ */
+
+.top-drivers {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.top-drivers h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--yellow);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.driver-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.driver-list li {
+  display: flex;
+  align-items: center;
+  background-color: #fafafa;
+  border-radius: 8px;
+  padding: 0.6rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.driver-list li:hover {
+  background-color: #fff8d6;
+  transform: translateX(3px);
+}
+
+.driver-rank {
+  background-color: var(--yellow);
+  color: var(--black);
+  font-weight: 700;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.8rem;
+}
+
+.driver-list img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--yellow);
+  margin-right: 0.8rem;
+}
+
+.driver-info h4 {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.driver-info p {
+  color: #888;
+  font-size: 0.8rem;
+}

@@ -1,46 +1,75 @@
-function initCharts(driverActivity = []) {
+/* -----------------------------------
+   DASHBOARD CHARTS
+----------------------------------- */
 
-  const ctxLine = document.getElementById("lineDrivers");
-  new Chart(ctxLine, {
+document.addEventListener("DOMContentLoaded", () => {
+  // 1️⃣ Trips Over Time (Line Chart)
+  const ctxTrips = document.getElementById("tripsOverTime");
+  new Chart(ctxTrips, {
     type: "line",
     data: {
-      labels: ["8 AM","9 AM","10 AM","11 AM","12 PM","1 PM","2 PM","3 PM","4 PM","5 PM","6 PM"],
+      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       datasets: [{
-        label: "Active Drivers",
-        data: driverActivity.length ? driverActivity : [50, 70, 87, 120, 90, 60, 40],
-        borderColor: "#5c3dff",
-        backgroundColor: "rgba(92,61,255,0.2)",
+        label: "Trips per Day",
+        data: [120, 150, 180, 220, 300, 270, 200],
+        borderColor: "#ffd60a",
+        backgroundColor: "rgba(255, 214, 10, 0.2)",
+        tension: 0.4,
         fill: true,
-        tension: 0.4
+        pointRadius: 4,
+        pointBackgroundColor: "#1c1c1c"
       }]
     },
-    options: {responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}}}
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
   });
 
-  
-  new Chart(document.getElementById("donutVisits"), {
-    type: "doughnut",
+  // 2️⃣ Fare Distribution (Bar Chart)
+  const ctxFare = document.getElementById("fareDistribution");
+  new Chart(ctxFare, {
+    type: "bar",
     data: {
-      labels: ["Used", "Remaining"],
+      labels: ["$0-10", "$10-20", "$20-30", "$30-40", "$40+"],
       datasets: [{
-        data: [74, 26],
-        backgroundColor: ["#ff5c8d", "#f1f1f1"],
-        borderWidth: 0
+        label: "Number of Trips",
+        data: [60, 120, 90, 40, 25],
+        backgroundColor: ["#7b2cbf", "#2ec4b6", "#ff8c00", "#ffd60a", "#ff5c8d"]
       }]
     },
-    options: {cutout: "70%", plugins:{legend:{display:false}}}
+    options: {
+      plugins: {
+        legend: { display: false }
+      },
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
   });
 
-  new Chart(document.getElementById("donutUsers"), {
-    type: "doughnut",
+  // 3️⃣ Taxi Type Breakdown (Pie Chart)
+  const ctxTaxi = document.getElementById("taxiTypeChart");
+  new Chart(ctxTaxi, {
+    type: "pie",
     data: {
-      labels: ["Active", "Inactive"],
+      labels: ["Yellow Taxi", "Green Taxi", "For-Hire Vehicle"],
       datasets: [{
-        data: [45, 55],
-        backgroundColor: ["#5c3dff", "#f1f1f1"],
-        borderWidth: 0
+        label: "Taxi Type Share",
+        data: [60, 25, 15],
+        backgroundColor: ["#ffd60a", "#2ec4b6", "#1c1c1c"]
       }]
     },
-    options: {cutout: "70%", plugins:{legend:{display:false}}}
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "bottom"
+        }
+      }
+    }
   });
-}
+});

@@ -1,102 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trips | NYC Taxi Dashboard</title>
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/navbar.css" />
-  <link rel="stylesheet" href="assets/css/responsive.css" />
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.5rem;
-      background-color: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trips | NYC Taxi Dashboard</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.5rem;
+        background-color: var(--white);
+        border-radius: 8px;
+        overflow: hidden;
+      }
 
-    th, td {
-      padding: 0.8rem;
-      text-align: left;
-      border-bottom: 1px solid #eee;
-    }
+      th,
+      td {
+        padding: 0.8rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+      }
 
-    th {
-      background-color: var(--yellow);
-      color: var(--black);
-    }
+      th {
+        background-color: var(--yellow);
+        color: var(--black);
+      }
 
-    tr:hover {
-      background-color: #fff8d6;
-    }
-  </style>
-</head>
+      tr:hover {
+        background-color: #fff8d6;
+      }
+    </style>
+  </head>
 
-<body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="assets/img/taxi-icon.png" alt="Taxi Logo" />
-      <h1>NYC Taxi Trips</h1>
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Dashboard</a></li>
-        <li><a href="drivers.html">Drivers</a></li>
-        <li><a href="trips.html" class="active">Trips</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
-    <div class="nav-right">
-      <input type="text" placeholder="Search..." class="search-bar" />
-      <img src="assets/img/user-icon.png" class="user-icon" alt="User" />
-    </div>
-  </header>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="logo">
+        <img src="data:image/png;base64,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" alt="Taxi Logo" />
+        <h1>NYC Taxi Trips</h1>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="trips.html" class="active">Trips</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <input type="text" placeholder="Search..." class="search-bar" />
+        <img src="./newuser.png" class="user-icon" alt="User" />
+      </div>
+    </header>
 
-  <main>
-    <h2>Trip Data Explorer</h2>
-    <p>Filter and analyze trip data including fares, distances, and pickup/dropoff points.</p>
+    <main>
+      <h2>Trip Data Explorer</h2>
+      <p>
+      Filter and analyze trip data including  distances, speed, duration
+        pickup/dropoff points.
+      </p>
 
-    <section>
-      <table>
-        <thead>
-          <tr>
-            <th>Trip ID</th>
-            <th>Pickup</th>
-            <th>Dropoff</th>
-            <th>Distance (km)</th>
-            <th>Fare ($)</th>
-          </tr>
-        </thead>
-        <tbody id="tripTableBody"></tbody>
-      </table>
-    </section>
-  </main>
+      <section>
+        <table>
+          <thead>
+            <tr>
+              <th>Trip ID</th>
+              <th>vendor id</th>
+              <th>Dropoff date</th>
+              <th>pickup date</th>
+              <th>Trip duration</th>
+              <th>Trip speed</th>
+            </tr>
+          </thead>
+          <tbody id="tripTableBody"></tbody>
+        </table>
+      </section>
+    </main>
 
-  <footer>
-    <p>© 2025 NYC Taxi Analytics | Designed by Nformi Girbong</p>
-  </footer>
+    <footer>
+      <p>© 2025 NYC Taxi Analytics | Designed by Nformi Girbong</p>
+    </footer>
 
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/navbar.js"></script>
-  <script>
-    // Populate trip table dynamically
-    document.addEventListener("DOMContentLoaded", () => {
-      const tbody = document.getElementById("tripTableBody");
-      tripData.forEach(trip => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${trip.id}</td>
-          <td>${trip.pickup}</td>
-          <td>${trip.dropoff}</td>
-          <td>${trip.distance.toFixed(1)}</td>
-          <td>$${trip.fare.toFixed(2)}</td>
-        `;
-        tbody.appendChild(row);
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script>
+      // Populate trip table dynamically
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const tripsData = await fetch("http://localhost:5000/trips");
+          const trips = await tripsData.json();
+          console.log(trips, "The trips");
+
+          const tbody = document.getElementById("tripTableBody");
+          trips.forEach((trip) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+            <td>${trip.id}</td>
+            <td>${trip.vendor_id}</td>
+            <td>${trip.pickup_datetime}</td>
+            <td>${trip.dropoff_datetime}</td>
+            <td>${trip.passenger_count}</td>
+            <td>${trip.trip_speed}</td>
+          
+          `;
+            tbody.appendChild(row);
+          });
+        } catch (e) {
+          console.log(e, "Error from here");
+        }
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
